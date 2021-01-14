@@ -6,7 +6,7 @@ PWD = $(shell pwd)
 DOCKERARGS = run --rm -v $(PWD):/src -w /src
 YOSYS     = $(DOCKER) $(DOCKERARGS) hdlc/yosys yosys
 NEXTPNR   = $(DOCKER) $(DOCKERARGS) hdlc/nextpnr:gowin nextpnr-gowin
-GOWINPACK = $(DOCKER) $(DOCKERARGS) hdlc/nextpnr:gowin gowin_pack
+GOWINPACK = $(DOCKER) $(DOCKERARGS) hdlc/apicula gowin_pack
 
 all: top.fs
 
@@ -23,6 +23,6 @@ prog: top.fs
 	openFPGALoader -b tangnano $^
 
 clean:
-	rm -f *.json *.fs
+	rm -f *.json *.fs *.pack
 
 .PHONY: %-tangnano-prog clean all
