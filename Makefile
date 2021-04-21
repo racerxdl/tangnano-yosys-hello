@@ -5,7 +5,7 @@ DOCKER=docker
 PWD = $(shell pwd)
 DOCKERARGS = run --rm -v $(PWD):/src -w /src
 YOSYS     = $(DOCKER) $(DOCKERARGS) hdlc/yosys yosys
-NEXTPNR   = $(DOCKER) $(DOCKERARGS) hdlc/nextpnr:gowin nextpnr-gowin
+NEXTPNR   = $(DOCKER) $(DOCKERARGS) racerxdl/nextpnr:gowin nextpnr-gowin
 GOWINPACK = $(DOCKER) $(DOCKERARGS) hdlc/apicula gowin_pack
 
 all: top.fs
